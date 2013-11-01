@@ -1,1 +1,1 @@
-web: gunicorn -b 83.220.239.131:$PORT run:start
+web: gunicorn run:start

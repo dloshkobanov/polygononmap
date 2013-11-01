@@ -1,3 +1,4 @@
+# coding: utf8
 #-------------------------------------------------------------------------------
 # Name:        views.py
 # Purpose:
@@ -16,14 +17,14 @@ from app import func
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title = 'Выберите точки на карте')
+    return render_template('index.html', title = 'Р’С‹Р±РµСЂРёС‚Рµ С‚РѕС‡РєРё РЅР° РєР°СЂС‚Рµ')
 
 @app.route('/<hash>')
 def coordinates(hash=None):
-    #ищем в базе все координаты по хэшу
-    #предположим координаты были такими
+    #РёС‰РµРј РІ Р±Р°Р·Рµ РІСЃРµ РєРѕРѕСЂРґРёРЅР°С‚С‹ РїРѕ С…СЌС€Сѓ
+    #РїСЂРµРґРїРѕР»РѕР¶РёРј РєРѕРѕСЂРґРёРЅР°С‚С‹ Р±С‹Р»Рё С‚Р°РєРёРјРё
     lstPoint = [(57.616667,39.85),(57.616667,39.85), (56.616667,39.85), (57.616667,38.85), (56.616667,38.85), (58.616667,40.85), (58.616667,39.85), (57.616667,40.85) ,(60.616667,39.85)]
-    numPolygon = func.grahamscan(lstPoint)# номера точек многоугольника
-    lstPolygon = [lstPoint[i] for i in numPolygon]# список точек многоугольника
-    centerPoint= func.centeroffravity(lstPolygon)# центер тяжести многоугольника
+    numPolygon = func.grahamscan(lstPoint)# РЅРѕРјРµСЂР° С‚РѕС‡РµРє РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРєР°
+    lstPolygon = [lstPoint[i] for i in numPolygon]# СЃРїРёСЃРѕРє С‚РѕС‡РµРє РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРєР°
+    centerPoint= func.centeroffravity(lstPolygon)# С†РµРЅС‚РµСЂ С‚СЏР¶РµСЃС‚Рё РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРєР°
     return render_template('coordinates.html', centerPoint=centerPoint, lstPolygon=lstPolygon, lstPoint=lstPoint)

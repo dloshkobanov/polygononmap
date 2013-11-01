@@ -7,22 +7,22 @@
     <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU"
             type="text/javascript"></script>
     <script type="text/javascript">
-        // Как только будет загружен API и готов DOM, выполняем инициализацию
+        // РљР°Рє С‚РѕР»СЊРєРѕ Р±СѓРґРµС‚ Р·Р°РіСЂСѓР¶РµРЅ API Рё РіРѕС‚РѕРІ DOM, РІС‹РїРѕР»РЅСЏРµРј РёРЅРёС†РёР°Р»РёР·Р°С†РёСЋ
         ymaps.ready(init);
- 
+
         function init () {
 
-            var centerPoint = [{{centerPoint[0][0]}}, {{centerPoint[0][1]}}];//центр карты
+            var centerPoint = [{{centerPoint[0][0]}}, {{centerPoint[0][1]}}];//С†РµРЅС‚СЂ РєР°СЂС‚С‹
             var polygon = [[{% for point in lstPolygon %}
                                [{{point[0]}}, {{point[1]}}]{% if loop.last != true%},{% endif %}
-                            {% endfor %}]];//многоугольник
+                            {% endfor %}]];//РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРє
 
             var lstPoint = [{% for point in lstPoint %}
                                [{{point[0]}}, {{point[1]}}]{% if loop.last != true%},{% endif %}
-                            {% endfor %}];//набор всех точек
+                            {% endfor %}];//РЅР°Р±РѕСЂ РІСЃРµС… С‚РѕС‡РµРє
 
-            var myMap = new ymaps.Map("map", {center: [centerPoint[0], centerPoint[1]], zoom: 10});//рисуем карту
-            myMap.geoObjects.add(new ymaps.Polygon(polygon));//рисуем многоугольник
+            var myMap = new ymaps.Map("map", {center: [centerPoint[0], centerPoint[1]], zoom: 10});//СЂРёСЃСѓРµРј РєР°СЂС‚Сѓ
+            myMap.geoObjects.add(new ymaps.Polygon(polygon));//СЂРёСЃСѓРµРј РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРє
 
             for (var i = 0; i < lstPoint.length; i++)
                 myMap.geoObjects.add(new ymaps.GeoObject({geometry: {type: "Point",
@@ -33,11 +33,11 @@
         }
     </script>
 </head>
- 
+
 <body>
-<h2>Построение многоугольника по заданным координатам</h2>
- 
+<h2>{{title}}</h2>
+
 <div id="map" style="width:800px; height:600px"></div>
 </body>
- 
+
 </html>

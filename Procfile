@@ -1,2 +1,1 @@
-web: gunicorn run:app
-worker: celeryd --loglevel=INFO
+web: gunicorn --host 127.0.0.1 --port 8080 run:start

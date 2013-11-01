@@ -1,1 +1,1 @@
-web: gunicorn --host 127.0.0.1 --port 8080 run:start
+web: gunicorn -b 127.0.0.1:8000 run:start
